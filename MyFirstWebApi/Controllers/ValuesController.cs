@@ -7,7 +7,7 @@ using Microsoft.Extensions.Logging;
 
 namespace MyFirstWebApi.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/values")]
     [ApiController]
     public class ValuesController : ControllerBase
     {
@@ -18,16 +18,17 @@ namespace MyFirstWebApi.Controllers
             return new string[] { "value1", "value2" };
         }
 
-        // GET api/values/5
-        [HttpGet("{id}")]
-        public IActionResult Get(int id)
+        // api/values/echonumbers/{id}
+        // GET api/values/echonumbers/5
+        [HttpGet("echonumbers/{number}")]
+        public IActionResult EchoBackANumber(int number)
         {
-            if (id == 1000)
+            if (number == 1000)
             {
                 return NotFound("You suck at life.");
             }
-
-            return Ok(id);
+            
+            return Ok(number);
         }
 
         // POST api/values
